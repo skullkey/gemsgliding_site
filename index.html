@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEMS Thermal Soaring</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>GEMS THERMAL SOARING</h1>
+            <p>RC Gliding Club - F3K | F5J | Winch Launch</p>
+            <nav class="main-nav">
+                <a href="#about">About</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#location">Location</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="modal-section">
+        <div class="section-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2>About Us</h2>
+            <div class="about-grid">
+                <div class="about-item">
+                    <h3>What We Fly</h3>
+                    <ul>
+                        <li>F3K (Hand Launch Gliders)</li>
+                        <li>F5J (Electric Launch)</li>
+                        <li>Winch Launch</li>
+                    </ul>
+                </div>
+                <div class="about-item">
+                    <h3>When We Fly</h3>
+                    <p>Regular flying days and competitions throughout the year. All skill levels welcome.</p>
+                </div>
+                <div class="about-item">
+                    <h3>Join Us</h3>
+                    <p>Whether you're an experienced pilot or just curious about RC gliding, come visit us at the field.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="modal-section">
+        <div class="section-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2>Gallery</h2>
+            <p class="gallery-intro">Latest photos and videos from the field</p>
+            <div id="gallery-grid" class="gallery-grid">
+                <!-- Gallery items will be loaded dynamically from gallery.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="modal-section">
+        <div class="section-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2>Find Us</h2>
+            <div class="location-grid">
+                <div class="location-info">
+                    <h3>Flying Field</h3>
+                    <p>Details about the field location will go here.</p>
+                    <p>GPS Coordinates: TBD</p>
+                    <h3>Directions</h3>
+                    <p>Driving directions will go here.</p>
+                </div>
+                <div class="map-container">
+                    <!-- Google Maps embed will go here -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0867087268786!2d-122.41941708468197!3d37.77492977975903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sTransamerica%20Pyramid!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="modal-section">
+        <div class="section-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2>Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Email: info@gemssoaring.co.za</p>
+                    <p>Phone: TBD</p>
+                    <h3>Committee Members</h3>
+                    <p>Names and roles to be added</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Name" required>
+                        <input type="email" placeholder="Email" required>
+                        <textarea placeholder="Message" rows="5" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox for images -->
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-caption"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 GEMS Thermal Soaring. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

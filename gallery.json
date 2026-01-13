@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "type": "image",
+      "src": "images/hero.jpg",
+      "caption": "GEMS Thermal Soaring Club - Flying Day 2025"
+    },
+    {
+      "type": "video",
+      "src": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "caption": "F3K Competition Highlights"
+    },
+    {
+      "type": "image",
+      "src": "images/photo1.jpg",
+      "caption": "Beautiful gliders on the field"
+    },
+    {
+      "type": "image",
+      "src": "images/photo2.jpg",
+      "caption": "Launch sequence"
+    },
+    {
+      "type": "video",
+      "src": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "caption": "Winch launch demonstration"
+    },
+    {
+      "type": "image",
+      "src": "images/photo3.jpg",
+      "caption": "Thermal hunting"
+    },
+    {
+      "type": "image",
+      "src": "images/photo3.jpg",
+      "caption": "Thermal hunting"
+    },
+    {
+      "type": "image",
+      "src": "images/photo3.jpg",
+      "caption": "Thermal hunting"
+    },
+    {
+      "type": "image",
+      "src": "images/photo3.jpg",
+      "caption": "Thermal hunting"
+    },
+    {
+      "type": "image",
+      "src": "images/photo3.jpg",
+      "caption": "Thermal hunting"
+    }
+
+  ]
+}
