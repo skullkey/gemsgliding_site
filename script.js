@@ -1,7 +1,7 @@
 // Load hero image from JSON
 async function loadHero() {
     try {
-        const response = await fetch('hero.json');
+        const response = await fetch('hero.json?v=' + Date.now());
         const data = await response.json();
         const heroSection = document.getElementById('hero');
         
@@ -118,7 +118,7 @@ window.addEventListener('popstate', function(e) {
 // Load gallery from JSON
 async function loadGallery() {
     try {
-        const response = await fetch('gallery.json');
+        const response = await fetch('gallery.json?v=' + Date.now());
         const data = await response.json();
         const galleryGrid = document.getElementById('gallery-grid');
         
