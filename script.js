@@ -29,6 +29,8 @@ function openModal(sectionId) {
     if (section) {
         section.classList.add('active');
         document.body.style.overflow = 'hidden';
+        // Push state to history so back button works
+        history.pushState({ modalOpen: sectionId }, '', `#${sectionId}`);
     }
 }
 
@@ -38,6 +40,13 @@ function closeModal(sectionId) {
         section.classList.remove('active');
         document.body.style.overflow = 'auto';
     }
+}
+
+function closeAllModals() {
+    document.querySelectorAll('.modal-section.active').forEach(section => {
+        section.classList.remove('active');
+    });
+    document.body.style.overflow = 'auto';
 }
 
 // Navigation link handlers for modal sections
@@ -56,6 +65,10 @@ document.querySelectorAll('.modal-close').forEach(button => {
         if (section) {
             section.classList.remove('active');
             document.body.style.overflow = 'auto';
+            // Go back in history to remove hash
+            if (window.location.hash) {
+                history.back();
+            }
         }
     });
 });
@@ -66,6 +79,10 @@ document.querySelectorAll('.modal-section').forEach(section => {
         if (e.target === this) {
             this.classList.remove('active');
             document.body.style.overflow = 'auto';
+            // Go back in history to remove hash
+            if (window.location.hash) {
+                history.back();
+            }
         }
     });
 });
@@ -73,10 +90,28 @@ document.querySelectorAll('.modal-section').forEach(section => {
 // Close modal with Escape key
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-        document.querySelectorAll('.modal-section.active').forEach(section => {
-            section.classList.remove('active');
-        });
-        document.body.style.overflow = 'auto';
+        const hasActiveModal = document.querySelector('.modal-section.active');
+        if (hasActiveModal) {
+            closeAllModals();
+            // Go back in history to remove hash
+            if (window.location.hash) {
+                history.back();
+            }
+        }
+    }
+});
+
+// Handle browser back/forward button
+window.addEventListener('popstate', function(e) {
+    closeAllModals();
+    // If there's a hash in the URL after going back, open that modal
+    if (window.location.hash) {
+        const sectionId = window.location.hash.substring(1);
+        const section = document.getElementById(sectionId);
+        if (section && section.classList.contains('modal-section')) {
+            section.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
     }
 });
 

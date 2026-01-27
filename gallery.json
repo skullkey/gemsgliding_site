@@ -7,49 +7,28 @@
     },
     {
       "type": "video",
-      "src": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      "caption": "F3K Competition Highlights"
+      "src": "https://youtube.com/watch?v=WWeg5iMTE70",
+      "caption": "F3K 2025 SA Team support at GEMS"
     },
     {
       "type": "image",
-      "src": "images/photo1.jpg",
-      "caption": "Beautiful gliders on the field"
+      "src": "images/2025-02-22.jpeg",
+      "caption": "Bunch of happy fliers"
     },
     {
       "type": "image",
-      "src": "images/photo2.jpg",
-      "caption": "Launch sequence"
+      "src": "images/gliders.jpg",
+      "caption": "Gliders!"
     },
     {
       "type": "video",
-      "src": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      "caption": "Winch launch demonstration"
+      "src": "https://www.youtube.com/watch?v=UCZdZQoXXzg",
+      "caption": "Another perfect day for soaring"
     },
     {
-      "type": "image",
-      "src": "images/photo3.jpg",
-      "caption": "Thermal hunting"
-    },
-    {
-      "type": "image",
-      "src": "images/photo3.jpg",
-      "caption": "Thermal hunting"
-    },
-    {
-      "type": "image",
-      "src": "images/photo3.jpg",
-      "caption": "Thermal hunting"
-    },
-    {
-      "type": "image",
-      "src": "images/photo3.jpg",
-      "caption": "Thermal hunting"
-    },
-    {
-      "type": "image",
-      "src": "images/photo3.jpg",
-      "caption": "Thermal hunting"
+      "type": "video",
+      "src": "https://www.youtube.com/watch?v=REHXbYnuhD8",
+      "caption": "Happy 2026!"
     }
-
   ]
 }
