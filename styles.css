@@ -351,13 +351,13 @@ h3 {
 }
 
 .contact-info a {
-    color: #fff;
+    color: #6DB3F2;
     text-decoration: underline;
     transition: color 0.3s ease;
 }
 
 .contact-info a:hover {
-    color: #bbb;
+    color: #9FCBF5;
 }
 
 .contact-additional {
