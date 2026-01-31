@@ -103,6 +103,14 @@ document.addEventListener('keydown', function(e) {
 
 // Handle browser back/forward button
 window.addEventListener('popstate', function(e) {
+    // Check if lightbox is open
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox && lightbox.style.display === 'block') {
+        closeLightbox();
+        return;
+    }
+    
+    // Handle modal sections
     closeAllModals();
     // If there's a hash in the URL after going back, open that modal
     if (window.location.hash) {
@@ -222,13 +230,27 @@ function openLightbox(src, caption) {
     
     // Prevent body scroll when lightbox is open
     document.body.style.overflow = 'hidden';
+    
+    // Add to browser history so back button works
+    history.pushState({ lightboxOpen: true }, '', window.location.href);
 }
 
 // Close lightbox
-document.querySelector('.close')?.addEventListener('click', closeLightbox);
+document.querySelector('.close')?.addEventListener('click', () => {
+    closeLightbox();
+    // Remove from history if lightbox was opened via pushState
+    if (window.history.state && window.history.state.lightboxOpen) {
+        history.back();
+    }
+});
+
 document.getElementById('lightbox')?.addEventListener('click', function(e) {
     if (e.target === this) {
         closeLightbox();
+        // Remove from history if lightbox was opened via pushState
+        if (window.history.state && window.history.state.lightboxOpen) {
+            history.back();
+        }
     }
 });
 
@@ -241,7 +263,14 @@ function closeLightbox() {
 // ESC key to close lightbox
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-        closeLightbox();
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox.style.display === 'block') {
+            closeLightbox();
+            // Remove from history if lightbox was opened via pushState
+            if (window.history.state && window.history.state.lightboxOpen) {
+                history.back();
+            }
+        }
     }
 });
 
