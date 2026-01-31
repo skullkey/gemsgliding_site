@@ -2,6 +2,12 @@
   "items": [
     {
       "type": "image",
+      "src": "images/2026-01-31_153536_169235314.jpg",
+      "caption": "Photo from the field",
+      "uploaded": "2026-01-31T15:35:36.488338"
+    },
+    {
+      "type": "image",
       "src": "images/hero.jpg",
       "caption": "GEMS Thermal Soaring Club - Flying Day 2025"
     },
