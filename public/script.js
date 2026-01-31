@@ -132,7 +132,29 @@ async function loadGallery() {
     try {
         const response = await fetch('gallery.json?v=' + Date.now());
         const data = await response.json();
-        galleryData = data.items;
+        
+        // Sort items: dated items first (newest to oldest), then undated items (by filename)
+        galleryData = data.items.sort((a, b) => {
+            const hasDateA = !!a.date;
+            const hasDateB = !!b.date;
+            
+            // Both have dates: sort by date descending (newest first)
+            if (hasDateA && hasDateB) {
+                return new Date(b.date) - new Date(a.date);
+            }
+            
+            // Only A has date: A comes first
+            if (hasDateA && !hasDateB) return -1;
+            
+            // Only B has date: B comes first
+            if (!hasDateA && hasDateB) return 1;
+            
+            // Neither has date: sort by filename
+            const filenameA = a.src.split('/').pop().toLowerCase();
+            const filenameB = b.src.split('/').pop().toLowerCase();
+            return filenameA.localeCompare(filenameB);
+        });
+        
         displayGalleryPage(1);
         setupPagination();
     } catch (error) {
@@ -158,8 +180,8 @@ function displayGalleryPage(page) {
         const displayCaption = item.caption ? 
             (item.caption.length > 80 ? item.caption.substring(0, 80) + '...' : item.caption) : '';
         
-        // Format date
-        const formattedDate = formatGalleryDate(item.date);
+        // Format date only if date exists
+        const formattedDate = item.date ? formatGalleryDate(item.date) : '';
         
         if (item.type === 'image') {
             galleryItem.innerHTML = `
