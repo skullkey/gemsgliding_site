@@ -158,26 +158,48 @@ function displayGalleryPage(page) {
         const displayCaption = item.caption ? 
             (item.caption.length > 80 ? item.caption.substring(0, 80) + '...' : item.caption) : '';
         
+        // Format date
+        const formattedDate = formatGalleryDate(item.date);
+        
         if (item.type === 'image') {
             galleryItem.innerHTML = `
                 <img src="${item.src}" alt="${item.caption || ''}" loading="lazy">
+                ${formattedDate ? `<div class="gallery-date">${formattedDate}</div>` : ''}
                 ${displayCaption ? `<div class="gallery-caption">${displayCaption}</div>` : ''}
             `;
-            galleryItem.addEventListener('click', () => openLightbox(item.src, item.caption));
+            galleryItem.addEventListener('click', () => openLightbox(item.src, item.caption, item.date));
         } else if (item.type === 'video') {
             galleryItem.classList.add('video');
             const videoId = extractYouTubeID(item.src);
             galleryItem.innerHTML = `
                 <img src="https://img.youtube.com/vi/${videoId}/maxresdefault.jpg" alt="${item.caption || ''}" loading="lazy">
+                ${formattedDate ? `<div class="gallery-date">${formattedDate}</div>` : ''}
                 ${displayCaption ? `<div class="gallery-caption">${displayCaption}</div>` : ''}
             `;
-            galleryItem.addEventListener('click', () => openVideoModal(item.src, item.caption));
+            galleryItem.addEventListener('click', () => openVideoModal(item.src, item.caption, item.date));
         }
         
         galleryGrid.appendChild(galleryItem);
     });
     
     updatePaginationButtons();
+}
+
+function formatGalleryDate(dateString) {
+    if (!dateString) return '';
+    
+    const itemDate = new Date(dateString);
+    const now = new Date();
+    const oneYearAgo = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+    
+    const options = { month: 'short', day: 'numeric' };
+    
+    // If older than a year, include the year
+    if (itemDate < oneYearAgo) {
+        options.year = 'numeric';
+    }
+    
+    return itemDate.toLocaleDateString('en-US', options);
 }
 
 function setupPagination() {
@@ -219,20 +241,41 @@ function extractYouTubeID(url) {
 }
 
 // Lightbox for images
-function openLightbox(src, caption) {
+function openLightbox(src, caption, date) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxCaption = document.querySelector('.lightbox-caption');
     
     lightbox.style.display = 'block';
     lightboxImg.src = src;
-    lightboxCaption.textContent = caption || '';
+    
+    // Format caption with date
+    let captionText = '';
+    if (date) {
+        const fullDate = formatLightboxDate(date);
+        captionText = fullDate;
+        if (caption) {
+            captionText += ' • ' + caption;
+        }
+    } else if (caption) {
+        captionText = caption;
+    }
+    
+    lightboxCaption.textContent = captionText;
     
     // Prevent body scroll when lightbox is open
     document.body.style.overflow = 'hidden';
     
     // Add to browser history so back button works
     history.pushState({ lightboxOpen: true }, '', window.location.href);
+}
+
+function formatLightboxDate(dateString) {
+    if (!dateString) return '';
+    
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
 }
 
 // Close lightbox
@@ -275,7 +318,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 // Video modal for YouTube embeds
-function openVideoModal(videoUrl, caption) {
+function openVideoModal(videoUrl, caption, date) {
     const videoId = extractYouTubeID(videoUrl);
     const lightbox = document.getElementById('lightbox');
     const lightboxContent = lightbox.querySelector('.lightbox-content');
@@ -298,7 +341,20 @@ function openVideoModal(videoUrl, caption) {
     lightboxContent.style.display = 'none';
     lightbox.insertBefore(videoEmbed, lightboxCaption);
     lightbox.style.display = 'block';
-    lightboxCaption.textContent = caption || '';
+    
+    // Format caption with date
+    let captionText = '';
+    if (date) {
+        const fullDate = formatLightboxDate(date);
+        captionText = fullDate;
+        if (caption) {
+            captionText += ' • ' + caption;
+        }
+    } else if (caption) {
+        captionText = caption;
+    }
+    
+    lightboxCaption.textContent = captionText;
     document.body.style.overflow = 'hidden';
     
     // Clean up when closing
