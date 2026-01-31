@@ -2,6 +2,13 @@
   "items": [
     {
       "type": "image",
+      "src": "images/2026-01-31_164858_169235314.jpg",
+      "caption": "Photo from Schalk Heunis",
+      "uploaded": "2026-01-31T16:48:58.429893",
+      "date": "2026-01-31"
+    },
+    {
+      "type": "image",
       "src": "images/2026-01-31_164840_169235314.jpg",
       "caption": "Photo from Schalk Heunis",
       "uploaded": "2026-01-31T16:48:40.873082",
