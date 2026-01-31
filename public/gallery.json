@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "type": "image",
+      "src": "images/2026-01-31_162042_169235314.jpg",
+      "caption": "Photo from the field",
+      "uploaded": "2026-01-31T16:20:42.065575",
+      "date": "2026-01-31"
+    },
+    {
       "type": "video",
       "src": "https://www.youtube.com/watch?v=P7BZlwyLTJc",
       "caption": "Bungee launch",
