@@ -2,6 +2,13 @@
   "items": [
     {
       "type": "image",
+      "src": "images/2026-01-31_162052_169235314.jpg",
+      "caption": "Photo from the field",
+      "uploaded": "2026-01-31T16:20:52.179959",
+      "date": "2026-01-31"
+    },
+    {
+      "type": "image",
       "src": "images/2026-01-31_162051_169235314.jpg",
       "caption": "Photo from the field",
       "uploaded": "2026-01-31T16:20:51.549490",
