@@ -115,37 +115,92 @@ window.addEventListener('popstate', function(e) {
     }
 });
 
-// Load gallery from JSON
+// Load gallery from JSON with pagination
+let galleryData = [];
+let currentPage = 1;
+const itemsPerPage = 12;
+
 async function loadGallery() {
     try {
         const response = await fetch('gallery.json?v=' + Date.now());
         const data = await response.json();
-        const galleryGrid = document.getElementById('gallery-grid');
-        
-        data.items.forEach(item => {
-            const galleryItem = document.createElement('div');
-            galleryItem.className = 'gallery-item';
-            
-            if (item.type === 'image') {
-                galleryItem.innerHTML = `
-                    <img src="${item.src}" alt="${item.caption || ''}" loading="lazy">
-                `;
-                galleryItem.addEventListener('click', () => openLightbox(item.src, item.caption));
-            } else if (item.type === 'video') {
-                galleryItem.classList.add('video');
-                const videoId = extractYouTubeID(item.src);
-                galleryItem.innerHTML = `
-                    <img src="https://img.youtube.com/vi/${videoId}/maxresdefault.jpg" alt="${item.caption || ''}" loading="lazy">
-                `;
-                galleryItem.addEventListener('click', () => openVideoModal(item.src, item.caption));
-            }
-            
-            galleryGrid.appendChild(galleryItem);
-        });
+        galleryData = data.items;
+        displayGalleryPage(1);
+        setupPagination();
     } catch (error) {
         console.error('Error loading gallery:', error);
         document.getElementById('gallery-grid').innerHTML = '<p>Gallery content coming soon...</p>';
     }
+}
+
+function displayGalleryPage(page) {
+    currentPage = page;
+    const galleryGrid = document.getElementById('gallery-grid');
+    galleryGrid.innerHTML = '';
+    
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const pageItems = galleryData.slice(startIndex, endIndex);
+    
+    pageItems.forEach(item => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = 'gallery-item';
+        
+        // Truncate caption for display (max 80 characters)
+        const displayCaption = item.caption ? 
+            (item.caption.length > 80 ? item.caption.substring(0, 80) + '...' : item.caption) : '';
+        
+        if (item.type === 'image') {
+            galleryItem.innerHTML = `
+                <img src="${item.src}" alt="${item.caption || ''}" loading="lazy">
+                ${displayCaption ? `<div class="gallery-caption">${displayCaption}</div>` : ''}
+            `;
+            galleryItem.addEventListener('click', () => openLightbox(item.src, item.caption));
+        } else if (item.type === 'video') {
+            galleryItem.classList.add('video');
+            const videoId = extractYouTubeID(item.src);
+            galleryItem.innerHTML = `
+                <img src="https://img.youtube.com/vi/${videoId}/maxresdefault.jpg" alt="${item.caption || ''}" loading="lazy">
+                ${displayCaption ? `<div class="gallery-caption">${displayCaption}</div>` : ''}
+            `;
+            galleryItem.addEventListener('click', () => openVideoModal(item.src, item.caption));
+        }
+        
+        galleryGrid.appendChild(galleryItem);
+    });
+    
+    updatePaginationButtons();
+}
+
+function setupPagination() {
+    const prevBtn = document.getElementById('prev-page');
+    const nextBtn = document.getElementById('next-page');
+    
+    prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+            displayGalleryPage(currentPage - 1);
+        }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        const totalPages = Math.ceil(galleryData.length / itemsPerPage);
+        if (currentPage < totalPages) {
+            displayGalleryPage(currentPage + 1);
+        }
+    });
+}
+
+function updatePaginationButtons() {
+    const prevBtn = document.getElementById('prev-page');
+    const nextBtn = document.getElementById('next-page');
+    const pageInfo = document.getElementById('page-info');
+    
+    const totalPages = Math.ceil(galleryData.length / itemsPerPage);
+    
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+    
+    pageInfo.textContent = totalPages > 0 ? `Page ${currentPage} of ${totalPages}` : 'No items';
 }
 
 // Extract YouTube video ID from URL
