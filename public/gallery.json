@@ -2,6 +2,13 @@
   "items": [
     {
       "type": "image",
+      "src": "images/2026-01-31_164644_169235314.jpg",
+      "caption": "Photo from Schalk Heunis",
+      "uploaded": "2026-01-31T16:46:44.892853",
+      "date": "2026-01-31"
+    },
+    {
+      "type": "image",
       "src": "images/2026-01-31_162056_169235314.jpg",
       "caption": "",
       "uploaded": "2026-01-31T16:20:56.330935"
@@ -74,7 +81,8 @@
       "type": "image",
       "src": "images/2026-01-31_153536_169235314.jpg",
       "caption": "",
-      "uploaded": "2026-01-31T15:35:36.488338"    },
+      "uploaded": "2026-01-31T15:35:36.488338"
+    },
     {
       "type": "image",
       "src": "images/hero.jpg",
