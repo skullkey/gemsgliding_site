@@ -192,6 +192,76 @@ h3 {
 }
 
 /* SAMAA Section */
+.samaa-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.samaa-intro {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    color: #ddd;
+}
+
+.samaa-notice {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(255, 200, 100, 0.1);
+    border-left: 4px solid #ffc864;
+    border-radius: 4px;
+}
+
+.samaa-notice h3 {
+    margin-top: 0;
+    color: #ffc864;
+    font-size: 1.3rem;
+}
+
+.samaa-notice p {
+    margin-bottom: 0;
+    line-height: 1.7;
+}
+
+.samaa-resources {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.samaa-resources h3 {
+    margin-top: 0;
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.samaa-resources p {
+    margin-bottom: 1.5rem;
+}
+
+.samaa-pdf-link {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: rgba(107, 182, 255, 0.2);
+    color: #6bb6ff;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid rgba(107, 182, 255, 0.3);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.samaa-pdf-link:hover {
+    background: rgba(107, 182, 255, 0.3);
+    color: #8fc9ff;
+    border-color: #8fc9ff;
+    transform: translateX(5px);
+}
+
+/* Old SAMAA section styles (deprecated, kept for compatibility) */
 .samaa-section {
     margin-top: 4rem;
     padding: 2.5rem;
