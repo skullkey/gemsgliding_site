@@ -117,6 +117,37 @@ You can host this website for free on:
 
 All of these work perfectly with static HTML sites like this.
 
+## Deployment
+
+### Deploying to Production
+
+1. **Make your changes** to HTML, CSS, JS, or gallery.json
+
+2. **Update cache busting version** in `public/index.html`:
+   - Find `styles.css?v=YYYYMMDD` and `script.js?v=YYYYMMDD`
+   - Change the date to today (e.g., `?v=20260203`)
+   - ⚠️ **This is important!** Without updating the version, browsers will use cached old files
+
+3. **Commit and push** your changes:
+   ```bash
+   git add -A
+   git commit -m "Your change description"
+   git push
+   ```
+
+4. **Deploy to server**:
+   ```bash
+   ./deploy.sh
+   ```
+
+### When to Update Cache Busting Version
+
+- ✅ When you modify `styles.css`
+- ✅ When you modify `script.js`
+- ❌ Not needed for `gallery.json` changes (already has automatic cache busting)
+- ❌ Not needed for image changes
+- ❌ Not needed for `index.html` content changes (unless CSS/JS changed too)
+
 ## Testing Locally
 
 Open `index.html` in your web browser to preview. The gallery won't work when opening directly from your file system (due to browser security), but will work fine once uploaded to a web server.
