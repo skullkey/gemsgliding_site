@@ -695,7 +695,10 @@ footer {
     }
 
     /* Remove extra padding on contact columns for mobile */
-    .contact-info,
+    .contact-info {
+        padding: 0;
+    }
+    
     .contact-additional {
         padding: 1rem;
     }
