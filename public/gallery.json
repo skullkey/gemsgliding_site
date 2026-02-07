@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "type": "image",
+      "src": "images/2026-02-07_143927_169235314.jpg",
+      "caption": "",
+      "uploaded": "2026-02-07T14:39:27.399692",
+      "date": "2026-02-07"
+    },
+    {
       "type": "video",
       "src": "https://www.youtube.com/watch?v=hrNFdcbMltA",
       "caption": "Stunning day, winching, dlg and someone's birthday",
