@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "type": "video",
+      "src": "https://www.youtube.com/watch?v=hrNFdcbMltA",
+      "caption": "Stunning day, winching, dlg and someone's birthday",
+      "uploaded": "2026-02-07T15:39:51.901497",
+      "date": "2026-02-07"
+    },
+    {
       "type": "image",
       "src": "images/2026-02-07_080712_169235314.jpg",
       "caption": "Gems Committee",
