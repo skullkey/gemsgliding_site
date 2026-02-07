@@ -193,8 +193,9 @@ function displayGalleryPage(page) {
         } else if (item.type === 'video') {
             galleryItem.classList.add('video');
             const videoId = extractYouTubeID(item.src);
+            // Use hqdefault.jpg which is available for all videos (SD and HD)
             galleryItem.innerHTML = `
-                <img src="https://img.youtube.com/vi/${videoId}/maxresdefault.jpg" alt="${item.caption || ''}" loading="lazy">
+                <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="${item.caption || ''}" loading="lazy">
                 ${formattedDate ? `<div class="gallery-date">${formattedDate}</div>` : ''}
                 ${displayCaption ? `<div class="gallery-caption">${displayCaption}</div>` : ''}
             `;
