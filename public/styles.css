@@ -694,6 +694,12 @@ footer {
         padding: 3rem 1rem;
     }
 
+    /* Remove extra padding on contact columns for mobile */
+    .contact-info,
+    .contact-additional {
+        padding: 1rem;
+    }
+
     /* Smaller close buttons on mobile */
     .modal-close {
         font-size: 2rem;
