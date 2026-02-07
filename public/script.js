@@ -322,6 +322,15 @@ document.getElementById('lightbox')?.addEventListener('click', function(e) {
 
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
+    const lightboxContent = lightbox.querySelector('.lightbox-content');
+    
+    // Remove any video embeds to stop playback
+    const videoContainer = lightbox.querySelector('.video-container');
+    if (videoContainer) {
+        videoContainer.remove();
+        lightboxContent.style.display = 'block';
+    }
+    
     lightbox.style.display = 'none';
     document.body.style.overflow = 'auto';
 }
@@ -380,15 +389,8 @@ function openVideoModal(videoUrl, caption, date) {
     lightboxCaption.textContent = captionText;
     document.body.style.overflow = 'hidden';
     
-    // Clean up when closing
-    const closeBtn = document.querySelector('.close');
-    const originalClose = closeBtn.onclick;
-    closeBtn.onclick = function() {
-        videoEmbed.remove();
-        lightboxContent.style.display = 'block';
-        closeLightbox();
-        closeBtn.onclick = originalClose;
-    };
+    // Add to browser history so back button works
+    history.pushState({ lightboxOpen: true }, '', window.location.href);
 }
 
 // Contact form submission (placeholder)
