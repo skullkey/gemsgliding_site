@@ -6,23 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Static website for the GEMS Thermal Soaring RC Gliding Club (www.gemsgliding.co.za). No build tools, no frameworks — just HTML, CSS, and vanilla JavaScript served by nginx on AWS EC2.
 
-## Local Development
+## Live site editing
 
-```bash
-# Serve locally (gallery requires a web server due to fetch calls)
-cd public && python3 -m http.server 8000
-# Then visit http://localhost:8000
-```
+You are editing the live site, so be careful!  Make sure you commit and push all changes.  
 
-## Deployment
-
-```bash
-# 1. If CSS or JS changed, update cache buster version in public/index.html:
-#    styles.css?v=YYYYMMDD and script.js?v=YYYYMMDD
-# 2. Commit and push
-# 3. Deploy to EC2:
-./deploy.sh
-```
+## Cache Busting
 
 Cache busting is **manual** — the `?v=YYYYMMDD` query params on `styles.css` and `script.js` in `index.html` must be updated by hand when those files change. JSON files use `Date.now()` for automatic cache busting.
 
@@ -46,10 +34,7 @@ All website files live in `public/`. There is no build step.
 ## Infrastructure
 
 - **nginx.conf** — Server config. JSON/HTML: no-cache. Static assets (CSS/JS/images): 1-year cache with immutable. Security headers enabled. Gzip on.
-- **deploy.sh** — Pulls repo to EC2 instance.
-- **setup-nginx.sh** / **setup-ssl.sh** — One-time server setup scripts.
-- Server files live at `/var/www/gemsgliding/` on EC2. Nginx config goes to `/etc/nginx/sites-available/gemsgliding`.
-
+- 
 ## Content Editing
 
 - Gallery items: edit `public/gallery.json`
