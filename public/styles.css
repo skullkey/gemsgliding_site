@@ -510,12 +510,12 @@ h3 {
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin-top: 2rem;
+    gap: 2rem;
+    margin-top: 1rem;
 }
 
 .contact-info {
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .contact-info h3 {
