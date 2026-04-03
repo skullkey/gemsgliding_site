@@ -1,6 +1,14 @@
 {
   "items": [
     {
+      "type": "video",
+      "src": "https://www.youtube.com/watch?v=sbWYh7T3McQ",
+      "caption": "Easter morning at GEMS - perfect conditions",
+      "uploaded": "2026-04-03T09:06:40.326526",
+      "date": "2026-04-03",
+      "uploaded_by": "169235314"
+    },
+    {
       "type": "image",
       "src": "images/2026-03-22_114457-404347_169235314.jpg",
       "caption": "f3k fun comp event",
