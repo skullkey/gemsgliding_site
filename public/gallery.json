@@ -1,6 +1,14 @@
 {
   "items": [
     {
+      "type": "image",
+      "src": "images/2026-04-05_071758-444760_169235314.jpg",
+      "caption": "Long weekend at GEMS",
+      "uploaded": "2026-04-05T07:17:58.448865",
+      "date": "2026-04-05",
+      "uploaded_by": "169235314"
+    },
+    {
       "type": "video",
       "src": "https://www.youtube.com/watch?v=sbWYh7T3McQ",
       "caption": "Easter morning at GEMS - perfect conditions",
